@@ -1,0 +1,32 @@
+## Getting & Cleaning Data Project
+
+This is a project submission for the COursera course Getting and Cleaning Data. The aim is to take source data and write R code to transform the set to tidy data.
+
+### Data Source
+Data: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+### R script
+The R script called run_analysis.R does the following:
+
+*1) Merges the training and the test sets to create one data set
+        Checks if directory already exists
+        Checks if zip has already been downloaded in DCGprojectData directory
+        Checks if zip has already been unzipped
+        Sets up the file path & list all the files in the UCI HAR Dataset folder
+        Loads activity, subject and feature data 
+        Merges the training and the test sets to create a single set:
+                Concatenates each data table by rows using rbind
+                Set names to variables, creating new variable names for subject & activity and using the features.txt file to assign provided data features names
+                Merges columns to get the a singe data frame of all data
+                
+*2) Extracts only the measurements on the mean and standard deviation for each measurement.
+        Subsets only the mean and standard deviation measurements using grep over "mean()" and "std()". Subset for mean, std, subject & activity.
+        
+*3) Uses descriptive activity names to name the activities in the data set
+        Reads descriptive activity names from "activity_labels.txt"
+        Factorises the variable activity in the data frame Data using descriptive activity names in col 2.
+        
+*4) Appropriately labels the data set with descriptive variable names using gsub.
+
+*5) From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject using aggregate, defining order & writing a new table to new text file
+# DCG_project
